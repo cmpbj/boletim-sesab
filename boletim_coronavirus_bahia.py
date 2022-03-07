@@ -9,9 +9,7 @@ from docx.shared import Inches
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-"""**Primeiro, vamos criar um crawler que colherá o conteúdo da página desejada para que possamos coletar os dados**
-
-"""
+#Primeiro, vamos criar um crawler que colherá o conteúdo da página desejada para que possamos coletar os dados
 
 def crawl_website(url: str) -> str:
     
@@ -23,7 +21,10 @@ def crawl_website(url: str) -> str:
     else:
         return pagina.text
 
-"""**Utilizamos a função re.compile para compilar um padrão de expressão regular. A ideia é usar essas expressões para correspondência posterior com o que queremos encontrar no Boletim da Sesab**"""
+"""    
+Utilizamos a função re.compile para compilar um padrão de expressão regular. 
+A ideia é usar essas expressões para correspondência posterior com o que queremos encontrar no Boletim da Sesab
+"""
 
 REGEXP_CASOS = re.compile("([0-9.]+) casos confirmados")
 REGEXP_MORTES = re.compile("([0-9.]+) tiveram óbito confirmado")
@@ -39,7 +40,7 @@ REGEXP_VACINACAO_DOSE_REFORCO = re.compile("([0-9.]+) com a dose de reforço")
 REGEXP_VACINACAO_CRIANCAS = re.compile("([0-9.]+) crianças já foram imunizadas")
 REGEXP_VACINACAO_CRIANCAS_SEGUNDA_DOSE = re.compile("([0-9.]+) já tomaram também a segunda dose")
 
-"""**Agora vamos definir as datas que serão utilizadas para verificar se o boletim publicado pela Sesab é o mais atual e também para escrever nosso texto**"""
+#Agora vamos definir as datas que serão utilizadas para verificar se o boletim publicado pela Sesab é o mais atual e também para escrever nosso texto
 
 DIAS = [
     'segunda',
@@ -70,14 +71,20 @@ dia_da_semana = data_atual.day
 #Utilizaremos esta ultima data para salvar o documento com a data do dia que ele foi escrito
 data_do_arquivo = '{}-{}-{}'.format(data_atual.day, data_atual.month, data_atual.year)
 
-"""**Vamos usar o pacote Selenium para navegar no portal onde são publicados os boletins da Sesab e para encontrar o boletim propriamente dito. Para o Selenium funcionar, é preciso baixar o webdriver correspondente a seu navagedor. No caso do Google Chrome, você pode obter o webdriver através desse [link](https://chromedriver.chromium.org/downloads). É importante que esse arquivo esteja na mesma pasta em que estamos rodando esse script. Em seguinda, após abrirmos a página da Sesab, vamos usar a função find_element para encontrar o boletim. Veja aqui a documentação do [Selenium](https://selenium-python.readthedocs.io/locating-elements.html)**"""
+"""
+Vamos usar o pacote Selenium para navegar no portal onde são publicados os boletins da Sesab e para encontrar o boletim propriamente dito. 
+Para o Selenium funcionar, é preciso baixar o webdriver correspondente a seu navagedor. No caso do Google Chrome, você pode obter o webdriver 
+através desse link (https://chromedriver.chromium.org/downloads). É importante que esse arquivo esteja na mesma pasta em que estamos rodando esse script. 
+Em seguinda, após abrirmos a página da Sesab, vamos usar a função find_element para encontrar o boletim. Veja aqui a documentação do Selenium 
+(https://selenium-python.readthedocs.io/locating-elements.html)
+"""
 
 navegador = webdriver.Chrome()
 navegador.get('http://www.saude.ba.gov.br/category/emergencias-em-saude/')
 
 titulo = navegador.find_element(by=By.PARTIAL_LINK_TEXT, value='casos ativos')
 
-"""**Depois de encontrar o boletim na página, vamos acessá-lo**"""
+#Depois de encontrar o boletim na página, vamos acessá-lo
 
 titulo.click()
 
@@ -114,7 +121,7 @@ else:
     print("O boletim novo ainda não saiu")
     navegador.back()
 
-"""**Com os dados em mãos, agora podemos escrever nosso boletim**"""
+# Com os dados em mãos, agora podemos escrever nosso boletim
 
 documento = Document()
 
