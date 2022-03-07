@@ -5,15 +5,27 @@ O objetivo deste programa é criar um raspador que colete os dados sobre a situa
 Os dados coletados são os seguintes:
 
 Casos ativos
+
 Casos registrados nas últimas 24 horas
+
 Mortes registradas nas últimas 24 horas
+
 Casos confirmados desde o início da pandemia
+
 Casos considerados recuperados
+
 Total de mortes confirmadas desde o início da pandemia
+
 Casos descartados
+
 Casos em investigação
+
 Pessoas vacinadas com a primeira dose
+
 Pessoas vacinadas com a segunda dose
+
 Pessoas vacinadas com a dose de reforço
+
 Criancas de 5 a 11 anos vacinadas com a primeira dose
+
 Criancas de 5 a 11 anos vacinadas com a segunda dose
