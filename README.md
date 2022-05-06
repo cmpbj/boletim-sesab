@@ -26,6 +26,8 @@ Pessoas vacinadas com a segunda dose
 
 Pessoas vacinadas com a dose de reforço
 
+Pessoas vacinadas com a segunda dose de reforço
+
 Criancas de 5 a 11 anos vacinadas com a primeira dose
 
 Criancas de 5 a 11 anos vacinadas com a segunda dose
